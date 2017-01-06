@@ -1,3 +1,4 @@
+(function() {
 'use strict';
 
 angular.module('app')
@@ -71,3 +72,4 @@ angular.module('app')
             console.log(recipes.length + " recipes have been saved.");
         }; */
     });
+})();
