@@ -32,7 +32,7 @@
          controllerAs: 'vm',
          templateUrl: 'templates/recipe-detail.html'
        })
-       .when('/delete/:id', { // This was added by me
+       .when('/delete/:id', { // This path was added by me
          controller: 'RecipesController',
          controllerAs: 'vm',
          templateUrl: 'templates/recipes.html'
@@ -40,9 +40,10 @@
        .otherwise({
          redirectTo: '/'
        });
+       /*
        if(window.history && window.history.pushState) {
           /** use the HTML 5 History API */
-            $locationProvider.html5Mode({enabled: true, requireBase: false});
-       }
+          /*  $locationProvider.html5Mode({enabled: true, requireBase: false});
+       } */
    }
 })();

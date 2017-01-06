@@ -6,16 +6,7 @@
     .controller('RecipesController', function($scope, dataService, $location) {
 
         $scope.categories = null;
-/*
-        if($location.$$path === '/delete') {
-            console.log("delete clicked");
-            dataService.deleteRecipe($routeParams.id, function(index) {
-                $scope.recipes.splice(index, 1);
-            });
-        } else {
-            console.log("else clause");
-        }
-*/
+        
         dataService.getRecipes(function(response) {
             $scope.recipes = response.data;            
         });
@@ -51,7 +42,6 @@
             $location.path('/edit/' + id);
         };
 
-
         $scope.addRecipe = function() {
             $location.path('/add');
         };
@@ -59,6 +49,12 @@
         $scope.deleteRecipe = function(recipe, index) {
                 dataService.deleteRecipe(recipe);
                 $scope.recipes.splice(index, 1);
+            };
+
+            $scope.deleteIngredient = function(index) {
+                //dataService.deleteRecipe(recipe);
+                //$scope.recipes.splice(index, 1);
+                console.log('Hi, There')
             };
 
         /*

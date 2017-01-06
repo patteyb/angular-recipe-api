@@ -41,9 +41,29 @@ angular.module('app')
             .then(callback);
         };
 
+        this.getRecipeById = function(id, callback) {
+            console.log("In data.js, ", id);
+            $http.get(urlBase + '/recipes/' + id)
+            .then(callback);
+        };
+
+        this.saveRecipe = function(recipe) {
+            $http.put(urlBase + '/recipes/' + recipe._id, recipe);
+        };
+
+        this.saveNewRecipe = function(recipe) {
+            $http.post(urlBase + '/recipes/', recipe);
+        };
+ 
         this.deleteRecipe = function(recipe) {
             console.log("The " + recipe + " recipe has been deleted.");
             $http.delete(urlBase + '/recipes/' + recipe._id);
+            // other logic
+        };
+
+        this.deleteIngredient = function(index) {
+            console.log("The " + recipe.ingredient[index] + " ingredient has been deleted.");
+            $http.delete(urlBase + '/recipes/' + recipe.ingredient[index]);
             // other logic
         };
   /*      

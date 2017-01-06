@@ -5,19 +5,100 @@
     .controller('RecipeDetailController', function($scope, $location, $routeParams, dataService) {
 
         $scope.categories = null;
+
+        $scope.$back = function() {
+            window.history.back();
+        };
+
+        dataService.getCategories(function(response) {
+            $scope.categories = response.data;            
+        });
+
+        dataService.getFoodItems(function(response) {
+            $scope.foodItems = response.data;
+        })
 /*
         dataService.getRecipe(function(response) {
             $scope.recipe = response.data;            
         });
 */
-        if($location.$$path === '/edit') {
-            console.log("row clicked");
+        if($location.$$path === '/edit/' + $routeParams.id) {
+            //console.log("row clicked");
+            $scope.edit = true;
+            $scope.validationErrors = false;
             dataService.getRecipeById($routeParams.id, function(recipe) {
                 $scope.recipe = recipe.data;
             });
-        } else {
-            console.log("else clause");
+        }  else {
+            $scope.recipe = {
+                name: "",
+                description: "",
+                category: "",
+                prepTime: 0,
+                cookTime: 0,
+                ingredients: [{}],
+                steps: [{}],
+                _id: ""
+            };
+
+            $scope.category = {
+                name: "",
+                _id: ""
+            };
         }
+
+        $scope.saveRecipe = function(recipe) {
+            // Are we saving an editted recipe or a new recipe?
+            if($location.$$path === '/add') {
+                // save a new recipe
+                console.log("Saving new recipe");
+                $scope.recipe.category = $scope.category.name;
+                $scope.recipe._id = $scope.category._id;
+                                console.log(recipe);
+                dataService.saveNewRecipe(recipe, function(response) {
+                    console.log("saved new recipe");
+                });
+            } else {
+                // save an editted recipe
+                console.log("saving an editted recipe");
+                dataService.saveRecipe(recipe, function(response) {
+                    console.log("saved " + recipe.name);
+                });
+            }
+        };
+
+        $scope.deleteIngredient = function(recipe, index) {
+            //dataService.deleteIngredient($index);
+            //console.log("The " + recipe.ingredients[index].foodItem + " recipe has been deleted.");
+            $scope.recipe.ingredients.splice(index, 1);
+        };
+
+        $scope.addIngredient = function(recipe) {
+            //dataService.deleteIngredient($index);
+            //console.log("The " + recipe.ingredients[index].foodItem + " recipe has been deleted.");
+            var newIngredient = { foodItem: "", condition:  "", amount: "" };
+            $scope.recipe.ingredients.push(newIngredient);
+        };
+
+        $scope.deleteStep = function(recipe, index) {
+            //dataService.deleteIngredient($index);
+            //console.log("The " + recipe.ingredients[index].foodItem + " recipe has been deleted.");
+            $scope.recipe.steps.splice(index, 1);
+        };
+
+        $scope.addStep = function(recipe) {
+            //dataService.deleteIngredient($index);
+            //console.log("The " + recipe.ingredients[index].foodItem + " recipe has been deleted.");
+            var newStep = { description: "" };
+            if ($scope.edit) {
+                var index = prompt('Please enter step placement (1, 2, etc.)');
+                $scope.recipe.steps.splice(index-1, 0, newStep);
+            } else {
+                $scope.recipe.steps.push(newStep);
+            }
+        };
+
+        
 /*
         dataService.getCategories(function(response) {
             $scope.categories = response.data;            
