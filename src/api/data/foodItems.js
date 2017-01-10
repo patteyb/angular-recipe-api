@@ -19,7 +19,9 @@ var foodItems = [
   { name: 'Butter'},
   { name: 'Lemons'},
   { name: 'Sugar'},
-  { name: 'Steak'}
+  { name: 'Steak'},
+  { name: 'Pork chops'},
+  { name: 'Cream of Celery Soup'}
 ];
 
 module.exports = foodItems;

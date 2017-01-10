@@ -6,10 +6,6 @@ angular.module('app')
 
         var urlBase = '/api';
 
-        this.helloWorld = function() {
-            console.log("this is the data service's method");
-        };
-
         this.getRecipes = function(callback) {
             $http.get(urlBase + '/recipes')
             .then(callback);
@@ -48,12 +44,14 @@ angular.module('app')
             .then(callback);
         };
 
-        this.saveRecipe = function(recipe) {
-            $http.put(urlBase + '/recipes/' + recipe._id, recipe);
+        this.saveRecipe = function(recipe, successCallback, errorCallback) {
+            $http.put(urlBase + '/recipes/' + recipe._id, recipe).
+            then(successCallback, errorCallback);
         };
 
-        this.saveNewRecipe = function(recipe) {
-            $http.post(urlBase + '/recipes/', recipe);
+        this.saveNewRecipe = function(recipe, successCallback, errorCallback) {
+            $http.post(urlBase + '/recipes/', recipe)
+                .then(successCallback, errorCallback);
         };
  
         this.deleteRecipe = function(recipe) {
@@ -67,9 +65,5 @@ angular.module('app')
             $http.delete(urlBase + '/recipes/' + recipe.ingredient[index]);
             // other logic
         };
-  /*      
-        this.saveRecipes = function(recipes) {
-            console.log(recipes.length + " recipes have been saved.");
-        }; */
     });
 })();

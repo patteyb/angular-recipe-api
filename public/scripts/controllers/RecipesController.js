@@ -48,8 +48,11 @@
         };
 
         vm.deleteRecipe = function(recipe, index) {
-                dataService.deleteRecipe(recipe);
-                vm.recipes.splice(index, 1);
+                var okToDelete = confirm('Are you sure you want to delete ' + recipe.name + '?');
+                if (okToDelete) {
+                    dataService.deleteRecipe(recipe);
+                    vm.recipes.splice(index, 1);
+                }
             };
 
             vm.deleteIngredient = function(index) {

@@ -6,9 +6,7 @@
     <h2 ng-if="!vm.edit">Add New Recipe</h2>
   </div>
   <div class="grid-50">
-    <div class="flush-right">
-      <!-- TODO Add directives to both the "Save Recipe" and "Cancel"
-        buttons in order to handle user clicks.  CANCEL BUTTON IS DONE -->     
+    <div class="flush-right">    
       <button ng-click="vm.saveRecipe(vm.recipe)">Save Recipe</button>
       <button class="secondary" ng-click="vm.$back()">Cancel</button>
     </div>
@@ -16,17 +14,12 @@
 </div>
 <div class="clear"></div>
 
-<!-- TODO Add a directive to this div element so that it only displays
-  when there are validation messages to display. -->
-<div class="grid-100 row" ng-hide="!vm.validationErrors">
+<!-- Only displays when there are validation messages -->
+<div class="grid-100 row" ng-if="vm.validationErrors">
   <div class="grid-100">
-    <p><i>The following errors were found:</i></p>
-    <ul class="validation-errors">
-      <!-- TODO Add a directive to this li element so that it repeats
-        for each validation message that there is to display -->
-      <li>
-        <!-- TODO Add a binding expression to display the validation user message. -->
-      </li>
+    <p ng-if="vm.validationErrors"><i>The following errors were found:</i></p>
+    <ul class="validation-errors" ng-repeat ="errs in vm.errors">
+      <li ng-repeat="e in errs">{{ e.userMessage }}</li>
     </ul>
   </div>
 </div>
