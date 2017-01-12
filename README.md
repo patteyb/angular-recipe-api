@@ -1,5 +1,5 @@
 <h2 class="h4">Project Instructions</h2>
-            <p>To complete this project, follow the instructions below.</p>
+            To complete this project, follow the instructions below.
   <a class="steps-trigger toggle-steps add-css-color " href="#">
     8
     steps
@@ -35,7 +35,7 @@
 </li>
 </ul>
 
-      </li>
+
       <li class="steps-list-item">
           <h4>Set up routes for the "Recipes" and "Recipe Detail" screens:</h4>
 
@@ -48,7 +48,7 @@
     <li>To create links to the "Recipes" and "Recipe Detail" screens, you can add HTML anchor elements with <code>href</code> attribute values of <code>/#/</code> and <code>/#/edit/{id}</code> (or <code>/#/add</code> if you want to add a recipe). Be sure to replace <code>{id}</code> with an actual recipe ID from your a record in your database.</li>
     <li>From your controllers, you can browse to the "Recipes" and "Recipe Detail" screens using the built-in AngularJS <code>$location</code> service's <code>path</code> method. For instance, after a user has saved a recipe using the “Recipe Detail” screen, you can send the user back to the “Recipes” screen with: <code>$location.path('/')</code>.</li>
 </ul>
-      </li>
+
       <li class="steps-list-item">
           <h4>Create a <code>RecipesController</code> AngularJS Controller that provides the business logic for the <code>recipes.html</code> template. <u>Important Note: The name of the controller needs to match in order for the provided Angular routes to function properly</u>. Update the <code>RecipesController</code> controller to satisfy the following requirements:</h4>
 
@@ -60,7 +60,7 @@
     <li>Clicking the recipe “Add” button adds a new recipe </li>
 </ul>
 
-      </li>
+
       <li class="steps-list-item">
           <h4>Add built-in ng directives to <code>recipes.html</code>.</h4>
 
