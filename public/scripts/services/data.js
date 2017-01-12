@@ -12,7 +12,6 @@ angular.module('app')
         };
 
         this.getRecipesByCategory = function(category, callback) {
-            console.log('Category name: ', category.name);
             if (!category ) {
                 http.get(urlBase + '/recipes')
                     .then(callback);
@@ -33,13 +32,11 @@ angular.module('app')
         };
 
         this.getRecipe = function(id, callback) {
-            console.log("In data.js, ", id);
             $http.get(urlBase + '/recipes/' + id)
             .then(callback);
         };
 
         this.getRecipeById = function(id, callback) {
-            console.log("In data.js, ", id);
             $http.get(urlBase + '/recipes/' + id)
             .then(callback);
         };
@@ -55,15 +52,11 @@ angular.module('app')
         };
  
         this.deleteRecipe = function(recipe) {
-            console.log("The " + recipe + " recipe has been deleted.");
             $http.delete(urlBase + '/recipes/' + recipe._id);
-            // other logic
         };
 
         this.deleteIngredient = function(index) {
-            console.log("The " + recipe.ingredient[index] + " ingredient has been deleted.");
             $http.delete(urlBase + '/recipes/' + recipe.ingredient[index]);
-            // other logic
         };
     });
 })();

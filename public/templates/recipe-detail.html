@@ -1,10 +1,12 @@
 <div class="grid-100 row controls">
+
   <div class="grid-50">
     <!-- Display the recipe name when editing a recipe. 
          When adding a recipe, display the static text 'Add New Recipe'. -->
     <h2 ng-if="vm.edit">{{ vm.recipe.name }}</h2>
     <h2 ng-if="!vm.edit">Add New Recipe</h2>
   </div>
+
   <div class="grid-50">
     <div class="flush-right">    
       <button ng-click="vm.saveRecipe(vm.recipe)">Save Recipe</button>
@@ -26,15 +28,16 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Name </label>
     </p>
   </div>
+
   <div class="grid-40">
     <p>
-      <!-- TODO Add a directive to this input element to bind its value 
-        to the recipe model's `name` property. -->
+      <!-- Bind input element to the recipe model's `name` property. -->
       <input type="text" ng-model='vm.recipe.name'>
     </p>
   </div>
@@ -42,14 +45,16 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Description </label>
     </p>
   </div>
+
   <div class="grid-60">
     <p>
-      <!-- TODO Add a directive to this textarea element to bind its content 
+      <!-- Bind textarea element content 
         to the recipe model's `description` property. -->
       <textarea ng-model='vm.recipe.description'></textarea>
     </p>
@@ -58,11 +63,13 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Category </label>
     </p>
   </div>
+
   <div class="grid-30">
     <p>
       <!-- Bind select element to its value to the recipe model's `category` 
@@ -76,11 +83,13 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Prep Time </label>
     </p>
   </div>
+
   <div class="grid-20">
     <p>
       <!-- Bind input to the recipe model's `prepTime` property. -->
@@ -91,11 +100,13 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Cook Time </label>
     </p>
   </div>
+
   <div class="grid-20">
     <p>
       <!-- Bind input to the recipe model's `cookTime` property. -->
@@ -106,21 +117,25 @@
 <div class="clear"></div>
 
 <div class="grid-100 row">
+
   <div class="grid-20">
     <p class="label-spacing">
       <label> Ingredients </label>
     </p>
   </div>
+
   <div class="grid-30">
     <p class="label-spacing">
       <label> Item </label>
     </p>
   </div>
+
   <div class="grid-30">
     <p class="label-spacing">
       <label> Condition </label>
     </p>
   </div>
+  
   <div class="grid-15">
     <p class="label-spacing">
       <label> Amount </label>
