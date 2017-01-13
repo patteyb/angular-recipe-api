@@ -33,38 +33,6 @@
         });
 
         /**
-         * @name     getRecipesByCategory
-         * 
-         * @function Retrieves recipes. If user selects category from 
-         *           pull-down menu, it will retrieve only recipes that
-         *           fall in that category. Otherwise, gets all recipes.
-         */
-        function getRecipesByCategory() {
-            if (vm.category) {
-                dataService.getRecipesByCategory(vm.category, function(response) {
-                    vm.recipes = response.data;            
-                });
-            } else {
-                dataService.getRecipes(function(response) {
-                    vm.recipes = response.data;            
-                });
-            }
-        };
-
-        /**
-         * @name     editRecipe
-         * 
-         * @function Appends '/edit/:id' to path that will
-         *           invoke RecipeDetailController and recipe-detail.html
-         * 
-         * @param   {string} id Unique identified for a recipe
-         * 
-         */
-        function editRecipe(id) {
-            $location.path('/edit/' + id);
-        };
-
-        /**
          * @name     addRecipe
          * 
          * @function Appends '/add' to path that will
@@ -73,7 +41,7 @@
          */
         function addRecipe() {
             $location.path('/add');
-        };
+        }
 
         /**
          * @name     deleteRecipe
@@ -91,6 +59,38 @@
                 dataService.deleteRecipe(recipe);
                 vm.recipes.splice(index, 1);
             }
-        };
+        }
+
+        /**
+         * @name     editRecipe
+         * 
+         * @function Appends '/edit/:id' to path that will
+         *           invoke RecipeDetailController and recipe-detail.html
+         * 
+         * @param   {string} id Unique identified for a recipe
+         * 
+         */
+        function editRecipe(id) {
+            $location.path('/edit/' + id);
+        }   
+
+        /**
+         * @name     getRecipesByCategory
+         * 
+         * @function Retrieves recipes. If user selects category from 
+         *           pull-down menu, it will retrieve only recipes that
+         *           fall in that category. Otherwise, gets all recipes.
+         */
+        function getRecipesByCategory() {
+            if (vm.category) {
+                dataService.getRecipesByCategory(vm.category, function(response) {
+                    vm.recipes = response.data;            
+                });
+            } else {
+                dataService.getRecipes(function(response) {
+                    vm.recipes = response.data;            
+                });
+            }
+        }   
     });
 })();
